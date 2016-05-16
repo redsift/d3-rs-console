@@ -7,7 +7,6 @@ var menuHeight = 22,
     colorFrameEnd = '#D4D4D4';
     
 export default function console(id) {
-  var classed = 'text-multi-line', lineHeight = 0;
 
  var frameWidth = 300, 
       frameHeight = 200,
@@ -33,7 +32,7 @@ export default function console(id) {
     selection.each(function(data) {
       iter = iter + 1;
       
-      var parent = d3.select(this);
+      var parent = select(this);
       var el = parent.select(_impl.self());
       if (el.empty()) {
         el = parent.append('g').attr('id', _impl.id());
