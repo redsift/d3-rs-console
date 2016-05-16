@@ -1,6 +1,6 @@
 {
   "name": "@redsift/d3-rs-console",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Creates a console / terminal frame using D3v4.",
   "keywords": [
     "console",
