@@ -1,5 +1,5 @@
 export var name = "@redsift/d3-rs-console";
-export var version = "0.0.1";
+export var version = "0.0.3";
 export var description = "Creates a console / terminal frame using D3v4.";
 export var keywords = ["console","redsift","d3","terminal"];
 export var homepage = "https://github.com/redsift/d3-rs-console";

@@ -11,6 +11,11 @@
   g.console rect.background {
     fill: #002b36;
   }
+  
+  g.console-child rect {
+    fill: gray;
+  }
+  
   </style>  
   </head>
   <body>
@@ -31,9 +36,14 @@
     
     var el = d3.select('#elm').call(svg).select(svg.self()).select(svg.child());
 
-    var terminal = d3_rs_console.svg();          
+    var terminal = d3_rs_console.svg().childPadding(10);          
 
-    el.datum( 'Terminal' ).call(terminal);
+    var rect = el.datum('Terminal').call(terminal).select(terminal.self()).select(terminal.child())
+      .selectAll('rect').data([ 0 ]);
+      
+    rect = rect.enter().append('rect').merge(rect);
+    
+    rect.attr('width', terminal.childWidth()).attr('height', terminal.childHeight());
     
     var run = 0;
     
@@ -42,6 +52,8 @@
       el.datum('Terminal ' + run)
         .transition().duration(1000).delay(1000)
         .call(terminal.width(Math.random() * width).height(Math.random() * height)); 
+        
+      rect.attr('width', terminal.childWidth()).attr('height', terminal.childHeight());
     }, 2000);
 
     </script>

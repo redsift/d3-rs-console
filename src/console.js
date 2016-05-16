@@ -12,8 +12,10 @@ export default function console(id) {
       frameHeight = 200,
       x = 0,
       y = 0,
+      childPadding = 0,
       classed = 'console',
       appearance = 'blue',
+      inner = 'g.console-child',
       fill = 'none',
       dotStroke = 'rgba(111, 111, 113, 0.5)',
       frameStroke = 'rgba(177, 177, 177, 0.5)',
@@ -106,6 +108,10 @@ export default function console(id) {
         .attr('stroke', dotStroke)
         .attr('stroke-width', '0.5px');
       
+      var group = el.selectAll(_impl.child()).data([ 0 ]);
+      group = group.enter().append('g').attr('class', 'console-child').merge(group);
+
+      
       if (transition === true) {
         el = el.transition(context);
         txt = txt.transition(context);
@@ -113,8 +119,9 @@ export default function console(id) {
         bg = bg.transition(context);
         dots = dots.transition(context);
         clipRect = clipRect.transition(context);
+        group = group.transition(context);
       }
-      
+            
       el.attr('transform', 'translate(' + x + ', ' + y + ')');
             
       clipRect.attr('width', frameWidth)
@@ -145,11 +152,17 @@ export default function console(id) {
           }
           return '#8E8E93';
         });      
+      
+      group.attr('transform', 'translate(' + childPadding + ', ' + (menuHeight + childPadding) + ')');
+
    });
   }
   
   _impl.self = function() { return 'g' + (id ?  '#' + id : '.' + classed); }
-  
+  _impl.child = function() { return inner; }
+  _impl.childWidth = function() { return frameWidth - (2 * childPadding); }
+  _impl.childHeight = function() { return frameHeight - (2 * childPadding) - menuHeight; }
+      
   _impl.id = function() {
     return id;
   };
@@ -169,6 +182,10 @@ export default function console(id) {
   _impl.y = function(value) {
     return arguments.length ? (y = value, _impl) : y;
   };  
+
+  _impl.childPadding = function(value) {
+    return arguments.length ? (childPadding = value, _impl) : childPadding;
+  }; 
   
   _impl.classed = function(value) {
     return arguments.length ? (classed = value, _impl) : classed;
