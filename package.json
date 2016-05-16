@@ -1,6 +1,6 @@
 {
   "name": "@redsift/d3-rs-console",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Creates a console / terminal frame using D3v4.",
   "keywords": [
     "console",
@@ -32,7 +32,7 @@
     "d3-selection": "~0.7.2",
     "d3-timer": "~0.4.3",
     "d3-interpolate": "~0.7.0",    
-    "@redsift/d3-rs-svg": "~0.2.0"   
+    "@redsift/d3-rs-svg": "~0.2.2"   
   },
   "devDependencies": {
     "@redsift/tape-reel": "~0.0.2",
